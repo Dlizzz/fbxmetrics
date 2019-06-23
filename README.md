@@ -1,2 +1,2 @@
 # freeprobe
-Connect to Freebox through Free API to retrieve performance counters
+Connect to Freebox through FreeOS API to retrieve performance counters
