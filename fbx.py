@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """Define the Freebox
 
-Name: freebox.py
+Name: fbx.py
 Classes:
     Freebox: freebox object
 """
@@ -15,7 +15,7 @@ import platform
 import json
 from requests import HTTPError
 from zeroconf import Zeroconf, ServiceBrowser
-from freeerrors import FreeboxError
+from fbxerrors import FreeboxError
 
 
 METRICS_PREFIXE = "freebox_"
@@ -61,41 +61,6 @@ class Freebox(object):
     # zeroconf requests to have ".local." at the end of service name
     _TYPE = "_fbx-api._tcp.local."
 
-    class MDNSListener():
-        """Callback class to get information of the available MDNS service
-
-        Attributes:
-            _freebox: private - Freebox - Access to Freebox parent instance 
-        """
-
-        def __init__(self, freebox):
-            """Constructor
-
-            Arguments:
-                freebox: Freebox - Freebox to discover  
-            """
-
-            self._freebox = freebox
-
-        def add_service(self, zeroconf, stype, name):
-            """Callback when service is added. Get service info"""
-
-            info = zeroconf.get_service_info(stype, name)
-
-            # Store freebox properties in Freebox parent instance
-            if info is not None:
-                self._freebox.properties["name"] = info.name
-                self._freebox.properties["type"] = info.type
-                self._freebox.properties["server"] = info.server
-                self._freebox.properties["port"] = info.port
-                self._freebox.properties["address"] = (
-                    str(info.address[0])
-                    + "." + str(info.address[1])
-                    + "." + str(info.address[2])
-                    + "." + str(info.address[3])
-                )
-                for key, value in info.properties.items():
-                    self._freebox.properties[key.decode()] = value.decode()
 
     def __init__(self):
         """Initialize the Freebox through mDNS discovery

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """Exceptions classes definition
 
-Name: freeerrors.py
+Name: fbxerrors.py
 Exception classes:
     Error: base class for exceptions
     FreeboxError: communication with freebpox exceptions

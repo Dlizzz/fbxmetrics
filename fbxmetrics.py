@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 """
-    Name: freeprobe.py
+    Name: fbxmetrics.py
     Arguments:
         -r, --register: register freeprobe in Freebox (to allow FreeOS API connection) and exit
         -d, --dr-run: print performance counters to stdout without sendig them to Prometheus 
@@ -25,8 +25,8 @@ import os
 import sys
 import argparse
 import ptvsd
-from freeerrors import FreeboxError
-from freebox import Freebox
+from fbxerrors import FreeboxError
+from fbx import Freebox
 
 __version_info__ = ('0', '0', '1')
 __version__ = '.'.join(__version_info__)
