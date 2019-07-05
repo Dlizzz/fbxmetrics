@@ -1,4 +1,4 @@
-# freeprobe
+# fbxmetrics
 Connect to Freebox and retrieve various performance counters to push them to Prometheus push gateway
 
 ## Arguments
